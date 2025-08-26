@@ -1035,6 +1035,7 @@ html {
 /* Social Media Icons */
 .social-icons {
   margin-top: auto;
+  margin-bottom: 5px;
 }
 
 .social-icons a {
@@ -1042,6 +1043,10 @@ html {
   color: #007B5E;
   font-size: 1.2rem;
   transition: color 0.3s;
+}
+
+.social-icons:hover {
+  color: #FFC107; /* Gold on hover */
 }
 
 .social-icons a:hover {
@@ -1102,6 +1107,15 @@ html {
 
 .gallery-item:hover img {
   transform: scale(1.05);
+}
+
+.gallery-item .desp{
+  color:white;
+  text-align: center;
+}
+.gallery-item:hover p{
+  color: black;
+  background-color: grey;
 }
 
 /* Mobile optimization */
