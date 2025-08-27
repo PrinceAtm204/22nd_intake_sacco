@@ -821,6 +821,18 @@ html {
   line-height: 1.7;
 }
 
+.sub-section-list-membership {
+  list-style-type: decimal;
+  padding-left: 2rem;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.sub-section-list-membership li {
+  margin-bottom: 10px;
+}
+
 .sub-section-list li {
   margin-bottom: 10px;
 }
