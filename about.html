@@ -13,42 +13,145 @@
 
 <body class="about-page">
 
-    <!-- Navbar -->
+  <!-- Navbar -->
   <header class="navbar">
-    <div class="navbar-container">
-      <img src="images/blue logo.png" alt="SACCO Logo" class="sacco-logo" />
-      <nav class="desktop-nav">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="#" class="nav-link">Finance</a>
-        <a href="#" class="nav-link">Downloads</a>
-        <a href="#" class="nav-link">News</a>
-        <a href="#" class="nav-link">Contact</a>
-      </nav>
-      <button id="menu-toggle" class="hamburger-btn">
-        <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="mobile-nav">
-      <a href="index.html" class="mobile-nav-link active">Home</a>
-      <a href="about.html" class="mobile-nav-link">About</a>
-      <a href="#" class="mobile-nav-link">Finance</a>
-      <a href="#" class="mobile-nav-link">Downloads</a>
-      <a href="#" class="mobile-nav-link">News</a>
-      <a href="#" class="mobile-nav-link">Contact</a>
-    </div>
-    <script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-</script>
-  </header>
+  <div class="navbar-container">
+    <!-- Logo -->
+    <img src="images/blue logo.png" alt="SACCO Logo" class="sacco-logo" />
 
-  <section id="about-container">
+  <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html" class="nav-link">Home</a>
+
+    <div class="desktop-nav-item">
+      <a href="about.html" class="nav-link active">About</a>
+      <div class="desktop-submenu">
+        <a href="membership.html" class="desktop-sub-link">Membership</a>
+        <a href="leadership.html" class="desktop-sub-link">Leadership</a>
+        <a href="gallery.html" class="desktop-sub-link">Gallery</a>
+      </div>
+    </div>
+
+    <div class="desktop-nav-item">
+      <a href="finance.html" class="nav-link">Finance</a>
+      <div class="desktop-submenu">
+        <a href="shares.html" class="desktop-sub-link">Shares</a>
+        <a href="savings.html" class="desktop-sub-link">Savings</a>
+        <a href="loans.html" class="desktop-sub-link">Loan Services</a>
+      </div>
+    </div>
+
+      <a href="downloads.html" class="nav-link">Downloads</a>
+      <a href="news.html" class="nav-link">News</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+
+  <!-- Hamburger button for mobile -->
+    <button id="menu-toggle" class="hamburger-btn">
+      <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-menu" class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link active">Home</a>
+
+    <!-- About dropdown -->
+    <div class="mobile-nav-item">
+      <a href="about.html" class="mobile-nav-link has-dropdown">About ▾</a>
+      <div class="mobile-submenu">
+        <a href="membership.html" class="mobile-sub-link">Membership</a>
+        <a href="leadership.html" class="mobile-sub-link">Leadership</a>
+        <a href="gallery.html" class="mobile-sub-link">Gallery</a>
+      </div>
+    </div>
+
+    <!-- Finance dropdown -->
+    <div class="mobile-nav-item">
+      <a href="finance.html" class="mobile-nav-link has-dropdown">Finance ▾</a>
+      <div class="mobile-submenu">
+        <a href="savings.html" class="mobile-sub-link">Savings</a>
+        <a href="loans.html" class="mobile-sub-link">Loan Services</a>
+        <a href="shares.html" class="mobile-sub-link">Shares</a>
+      </div>
+    </div>
+
+    <!-- Other regular links -->
+    <a href="downloads.html" class="mobile-nav-link">Downloads</a>
+    <a href="news.html" class="mobile-nav-link">News</a>
+    <a href="contact.html" class="mobile-nav-link">Contact</a>
+  </div>
+
+  <!-- JavaScript for toggle & accordion -->
+  <script>
+const toggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('mobile-menu');
+
+toggle.addEventListener('click', () => {
+  menu.classList.toggle('show');
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 768) menu.classList.remove('show');
+});
+
+window.addEventListener('orientationchange', () => {
+  menu.classList.remove('show');
+});
+
+// Keep track of last clicked link to allow second tap to navigate
+document.querySelectorAll('.has-dropdown').forEach(link => {
+  link.dataset.clicked = "false"; // initial state
+
+  link.addEventListener('click', e => {
+    const submenu = link.nextElementSibling;
+    if (!submenu) return; // no submenu, normal link
+
+    e.preventDefault(); // prevent navigation first click
+
+    if (link.dataset.clicked === "false") {
+      // First tap → expand
+      submenu.classList.add('show');
+      submenu.style.height = submenu.scrollHeight + 'px';
+      link.dataset.clicked = "true";
+    } else {
+      // Second tap → navigate
+      link.dataset.clicked = "false"; // reset
+      window.location = link.href;
+    }
+
+    // Collapse other open submenus if needed
+    document.querySelectorAll('.mobile-submenu').forEach(sub => {
+      if (sub !== submenu) {
+        sub.style.height = '0';
+        sub.classList.remove('show');
+        const parentLink = sub.previousElementSibling;
+        if (parentLink) parentLink.dataset.clicked = "false";
+      }
+    });
+  });
+});
+
+// Smooth collapse on sub-link click
+menu.querySelectorAll('.mobile-sub-link').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('show');
+    const parentSubmenu = link.closest('.mobile-submenu');
+    if (parentSubmenu) {
+      parentSubmenu.style.height = '0';
+      parentSubmenu.classList.remove('show');
+      const parentLink = parentSubmenu.previousElementSibling;
+      if (parentLink) parentLink.dataset.clicked = "false";
+    }
+  });
+});
+</script>
+
+</header>
+
+<section id="about-container">
 
     <!-- Internal Sticky Navigation for All 7 Sections -->
 <nav id="section-nav">
@@ -474,6 +577,19 @@
           <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
+
+      <!-- <div class="team-card">
+        <img src="images/male-avatar.jpg" alt="Member">
+        <h4>Muzaale Sadat</h4>
+        <p>Member</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div> -->
       
     </div>
   </div>
@@ -589,6 +705,46 @@
 <div id="gallery-section">
   <h2 class="section-title">Gallery</h2>
   <p class="section-description">
+    A glimpse into events and activities of Uganda Police 22nd Intake Fraternity SACCO Ltd.
+  </p>
+
+  <div class="gallery-grid">
+    <!-- Gallery Item -->
+    <div class="gallery-card">
+      <img src="images/mtng 1.jpg" alt="Annual General Meeting">
+      <div class="gallery-overlay">
+        <h4>Annual General Meeting</h4>
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/mtng 2.jpg" alt="Loan Disbursement Session">
+      <div class="gallery-overlay">
+        <h4>Loan Disbursement Session</h4>
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/Agm.jpg" alt="Team Building Retreat">
+      <div class="gallery-overlay">
+        <h4>Team Building Retreat</h4>
+      </div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="images/Agm 4.jpg" alt="SACCO Training Workshop">
+      <div class="gallery-overlay">
+        <h4>SACCO Training Workshop</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Section 7: Gallery --
+<div id="gallery-section">
+  <h2 class="section-title">Gallery</h2>
+  <p class="section-description">
     A glimpse into our events, activities, and memorable moments at Uganda Police 22nd Intake Fraternity SACCO Ltd.
   </p>
 
@@ -628,14 +784,12 @@
       <img src="images/mtng.jpg" alt="Meeting">
     </div>
   </div>
-</div>
+</div> -->
      
-
-
 </section>
 
 
- <!-- Footer -->
+<!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-about">

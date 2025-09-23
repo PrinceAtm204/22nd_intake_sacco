@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leadership | Uganda Police 22nd Intake Fraternity SACCO</title>
+  <!-- External Tailwind CSS link goes here -->
+  <link href="style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body class="about-page">
+
+  <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+        <!-- Logo -->
+            <img src="images/blue logo.png" alt="SACCO Logo" class="sacco-logo" />
+
+        <!-- Desktop nav -->
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link">Home</a>
+
+                <div class="desktop-nav-item">
+                <a href="about.html" class="nav-link">About</a>
+                <div class="desktop-submenu">
+                    <a href="membership.html" class="desktop-sub-link">Membership</a>
+                    <a href="leadership.html" class="desktop-sub-link active">Leadership</a>
+                    <a href="gallery.html" class="desktop-sub-link">Gallery</a>
+                </div>
+                </div>
+
+                <div class="desktop-nav-item">
+                <a href="finance.html" class="nav-link">Finance</a>
+                <div class="desktop-submenu">
+                    <a href="savings.html" class="desktop-sub-link">Savings</a>
+                    <a href="loans.html" class="desktop-sub-link">Loan Services</a>
+                    <a href="shares.html" class="desktop-sub-link">Shares</a>
+                </div>
+                </div>
+
+                <a href="downloads.html" class="nav-link">Downloads</a>
+                <a href="news.html" class="nav-link">News</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+        <!-- Hamburger button for mobile -->
+            <button id="menu-toggle" class="hamburger-btn">
+            <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            </button>
+        </div>
+
+        <!-- Mobile nav -->
+        <div id="mobile-menu" class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">Home</a>
+
+            <!-- About dropdown -->
+            <div class="mobile-nav-item">
+            <a href="about.html" class="mobile-nav-link has-dropdown">About ▾</a>
+            <div class="mobile-submenu">
+                <a href="membership.html" class="mobile-sub-link">Membership</a>
+                <a href="leadership.html" class="mobile-sub-link active">Leadership</a>
+                <a href="gallery.html" class="mobile-sub-link">Gallery</a>
+            </div>
+            </div>
+
+            <!-- Finance dropdown -->
+            <div class="mobile-nav-item">
+            <a href="finance.html" class="mobile-nav-link has-dropdown">Finance ▾</a>
+            <div class="mobile-submenu">
+                <a href="savings.html" class="mobile-sub-link">Savings</a>
+                <a href="loans.html" class="mobile-sub-link">Loan Services</a>
+                <a href="shares.html" class="mobile-sub-link">Shares</a>
+            </div>
+            </div>
+
+            <!-- Other regular links -->
+            <a href="downloads.html" class="mobile-nav-link">Downloads</a>
+            <a href="news.html" class="mobile-nav-link">News</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+        </div>
+
+        <!-- JavaScript for toggle & accordion -->
+        <script>
+            const toggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('mobile-menu');
+
+            toggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+            });
+
+            window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) menu.classList.remove('show');
+            });
+
+            window.addEventListener('orientationchange', () => {
+            menu.classList.remove('show');
+            });
+
+            // Keep track of last clicked link to allow second tap to navigate
+            document.querySelectorAll('.has-dropdown').forEach(link => {
+            link.dataset.clicked = "false"; // initial state
+
+            link.addEventListener('click', e => {
+                const submenu = link.nextElementSibling;
+                if (!submenu) return; // no submenu, normal link
+
+                e.preventDefault(); // prevent navigation first click
+
+                if (link.dataset.clicked === "false") {
+                // First tap → expand
+                submenu.classList.add('show');
+                submenu.style.height = submenu.scrollHeight + 'px';
+                link.dataset.clicked = "true";
+                } else {
+                // Second tap → navigate
+                link.dataset.clicked = "false"; // reset
+                window.location = link.href;
+                }
+
+                // Collapse other open submenus if needed
+                document.querySelectorAll('.mobile-submenu').forEach(sub => {
+                    if (sub !== submenu) {
+                        sub.style.height = '0';
+                        sub.classList.remove('show');
+                        const parentLink = sub.previousElementSibling;
+                        if (parentLink) parentLink.dataset.clicked = "false";
+                    }
+                    });
+                });
+                });
+
+                // Smooth collapse on sub-link click
+                menu.querySelectorAll('.mobile-sub-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.remove('show');
+                    const parentSubmenu = link.closest('.mobile-submenu');
+                    if (parentSubmenu) {
+                    parentSubmenu.style.height = '0';
+                    parentSubmenu.classList.remove('show');
+                    const parentLink = parentSubmenu.previousElementSibling;
+                    if (parentLink) parentLink.dataset.clicked = "false";
+                    }
+                });
+            });
+        </script>
+
+    </header>
+
+
+
+<h1>LEADERSHIP PAGE</h1>
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+        <div class="footer-about">
+            <h3 class="footer-title">About the SACCO</h3>
+            <p class="footer-text">UPF 22nd Intake SACCO is committed to empowering its members through financial services tailored for police officers.</p>
+        </div>
+        <div class="footer-links">
+            <h3 class="footer-title">Quick Links</h3>
+            <ul class="footer-link-list">
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="loans.html">Loans</a></li>
+            <li><a href="downloads.html">Downloads</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3 class="footer-title">Newsletter</h3>
+            <input type="email" placeholder="Your email" class="newsletter-input">
+            <button class="newsletter-button">Subscribe</button>
+        </div>
+        <div class="footer-contact">
+            <h3 class="footer-title">Contact</h3>
+            <p class="footer-text">Phone: +256 777 149314 | +256 756 360153 | +256 741 106322<br>Email: upf22ndintakesacco@gmail.com<br>Location: Bweyogerere - Kampala, Uganda</p>
+        </div>
+        </div>
+    </footer>
+
+ <script src="scripts.js"></script>
+
+
+</body>
+</html>
