@@ -108,6 +108,180 @@ header {
   }
 }
 
+
+/* Desktop Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ddeaf9;
+  min-width: 160px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .dropdown-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #0C2340;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.dropdown-menu .dropdown-link:hover {
+  background-color: #cde0f7;
+}
+
+/* Base hidden state */
+.mobile-dropdown-menu {
+  display: none; /* hidden by default */
+  padding-left: 1.5rem; /* indent to show hierarchy */
+  margin-top: 0.25rem;
+}
+
+/* When mobile menu is shown */
+#mobile-menu.show .mobile-dropdown-menu {
+  display: block; /* pushes other links down */
+}
+
+/* Dropdown link styling */
+.mobile-dropdown-link {
+  display: block;
+  padding: 0.5rem 0;
+  color: #0C2340;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.mobile-dropdown-link:hover {
+  color: #FFC107;
+  text-decoration: underline;
+}
+
+
+/* Submenu (hidden by default) */
+.mobile-submenu {
+  display: none;
+  padding-left: 1rem;
+  border-left: 2px solid #ccc;
+  margin: 0.5rem 0;
+}
+
+.mobile-submenu.show {
+  display: block;
+}
+
+.mobile-sub-link {
+  display: block;
+  padding: 0.4rem 0;
+  color: #0C2340;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.mobile-sub-link:hover {
+  color: #FFC107;
+}
+
+
+/* Mobile submenu with smooth slide */
+.mobile-submenu {
+  height: 0;
+  overflow: hidden;
+  padding-left: 1rem;
+  border-left: 2px solid #ccc;
+  margin: 0.5rem 0;
+  transition: height 0.3s ease;
+}
+
+.mobile-submenu.show {
+  /* height is set dynamically via JS for smooth animation */
+}
+
+.mobile-sub-link {
+  display: block;
+  padding: 0.4rem 0;
+  color: #0C2340;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.mobile-sub-link:hover {
+  color: #FFC107;
+}
+
+.nav-link.active,
+.nav-link:hover,
+.mobile-nav-link:hover {
+  color: #FFC107;
+  text-decoration: underline;
+}
+
+.desktop-nav-item {
+  position: relative;
+}
+
+.desktop-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ddeaf9;
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+.desktop-submenu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #0C2340;
+  text-decoration: none;
+}
+
+.desktop-submenu a:hover {
+  color: #FFC107;
+}
+
+.desktop-nav-item:hover .desktop-submenu {
+  display: block;
+}
+
+
+
+/* Mobile Dropdown *
+.mobile-dropdown-menu {
+  display: none;
+  padding-left: 1rem;
+}
+
+.mobile-dropdown-menu.show {
+  display: block;
+}
+
+.mobile-dropdown-link {
+  display: block;
+  padding: 0.5rem 0;
+  color: #0C2340;
+  text-decoration: none;
+}
+
+.mobile-dropdown-link:hover {
+  color: #FFC107;
+  text-decoration: underline;
+}
+ */
+
 /* Hero Section Update */
 .hero-section {
   position: relative;
@@ -1079,7 +1253,7 @@ html {
 
 /*about-us-gallery styling*/
 /* === SECTION 7: GALLERY === */
-#gallery-section {
+/* #gallery-section {
   padding: 60px 20px;
   background-color: #f8f9fa;
 }
@@ -1130,9 +1304,237 @@ html {
   background-color: grey;
 }
 
-/* Mobile optimization */
+/* Mobile optimization *
 @media (max-width: 600px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+} */
+
+/* === Section 7: Gallery === *
+#gallery-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+#gallery-section .section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #0C2340;
+}
+
+#gallery-section .section-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  color: #555;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay with description *
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 35, 64, 0.7); /* navy overlay *
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+  */
+
+  /* === Section 7: Gallery === */
+#gallery-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+#gallery-section .section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #0C2340;
+}
+
+#gallery-section .section-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  color: #555;
+}
+
+#gallery-section .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+#gallery-section .gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#gallery-section .gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+#gallery-section .gallery-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay with description */
+#gallery-section .gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 35, 64, 0.7); /* navy overlay */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#gallery-section .gallery-card:hover .gallery-overlay {
+  opacity: 1;
+}
+
+#gallery-section .gallery-overlay h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+/* MEMBERSHIP PAGE STYLING */
+
+/* ===========================
+   MEMBERSHIP PAGE STYLING
+   Scoped with membership- prefix
+   =========================== */
+
+/* Hero Section */
+.membership-hero {
+  background-color: #0C2340; /* Navy Blue */
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+.membership-hero-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.membership-hero-subtitle {
+  font-size: 1.2rem;
+}
+
+/* Section Styling */
+.membership-eligibility,
+.membership-benefits,
+.membership-apply,
+.membership-responsibilities {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.membership-section-title {
+  font-size: 2rem;
+  color: #0C2340;
+  margin-bottom: 20px;
+}
+.membership-list {
+  margin-left: 20px;
+  line-height: 1.8;
+}
+.membership-list a {
+  color: #FFC107; /* Gold */
+  text-decoration: underline;
+}
+
+/* Alternate background for readability */
+.membership-benefits,
+.membership-responsibilities {
+  background-color: #ffffff;
+}
+
+/* CTA Section */
+.membership-cta {
+  text-align: center;
+  padding: 60px 20px;
+}
+.membership-cta-button {
+  display: inline-block;
+  background-color: #FFC107;
+  color: #0C2340;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.membership-cta-button:hover {
+  background-color: #FFD85A;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .membership-hero-title {
+    font-size: 2.2rem;
+  }
+  .membership-section-title {
+    font-size: 1.6rem;
   }
 }

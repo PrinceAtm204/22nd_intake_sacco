@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style1.css" rel="stylesheet">
+</head>
+<body>
+    
+<!-- Navbar -->
+<header class="navbar">
+  <div class="navbar-container">
+    <img src="images/blue logo.png" alt="SACCO Logo" class="sacco-logo" />
+    <nav class="desktop-nav">
+      <a href="index.html" class="nav-link">Home</a>
+
+      <!-- About Us Dropdown -->
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link dropdown-toggle">About</a>
+        <div class="dropdown-menu">
+          <a href="#membership-section" class="dropdown-link">Membership</a>
+          <a href="#leadership-section" class="dropdown-link">Leadership</a>
+          <a href="#gallery-section" class="dropdown-link">Gallery</a>
+        </div>
+      </div>
+
+      <a href="#" class="nav-link">Finance</a>
+      <a href="#" class="nav-link">Downloads</a>
+      <a href="#" class="nav-link">News</a>
+      <a href="#" class="nav-link">Contact</a>
+    </nav>
+    <button id="menu-toggle" class="hamburger-btn">
+      <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link active">Home</a>
+
+    <!-- Mobile About Us Dropdown -->
+    <div class="mobile-dropdown">
+      <a href="#" class="mobile-nav-link mobile-dropdown-toggle">About</a>
+      <div class="mobile-dropdown-menu">
+        <a href="#membership-section" class="mobile-dropdown-link">Membership</a>
+        <a href="#leadership-section" class="mobile-dropdown-link">Leadership</a>
+        <a href="#gallery-section" class="mobile-dropdown-link">Gallery</a>
+      </div>
+    </div>
+
+    <a href="#" class="mobile-nav-link">Finance</a>
+    <a href="#" class="mobile-nav-link">Downloads</a>
+    <a href="#" class="mobile-nav-link">News</a>
+    <a href="#" class="mobile-nav-link">Contact</a>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  // Mobile dropdown toggle
+  const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+  mobileDropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      const menu = toggle.nextElementSibling;
+      menu.classList.toggle('show');
+    });
+  });
+</script>
+
+
+
+
+    
+</body>
+</html>
