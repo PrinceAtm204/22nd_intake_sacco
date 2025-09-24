@@ -19,7 +19,7 @@
     <!-- Logo -->
     <img src="images/blue logo.png" alt="SACCO Logo" class="sacco-logo" />
 
-  <!-- Desktop nav -->
+  <!-- Desktop nav --
   <nav class="desktop-nav">
     <a href="index.html" class="nav-link">Home</a>
 
@@ -46,6 +46,36 @@
       <a href="contact.html" class="nav-link">Contact</a>
   </nav>
 
+-->
+
+
+    <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html" class="nav-link">Home</a>
+
+    <div class="desktop-nav-item">
+      <a href="about.html" class="nav-link active">About</a>
+      <div class="desktop-submenu">
+        <a href="membership.html" class="desktop-sub-link">Membership</a>
+        <a href="holding-page.html" class="desktop-sub-link">Leadership</a>
+        <a href="holding-page.html" class="desktop-sub-link">Gallery</a>
+      </div>
+    </div>
+
+    <div class="desktop-nav-item">
+      <a href="holding-page.html" class="nav-link">Finance</a>
+      <div class="desktop-submenu">
+        <a href="holding-page.html" class="desktop-sub-link">Shares</a>
+        <a href="holding-page.html" class="desktop-sub-link">Savings</a>
+        <a href="holding-page.html" class="desktop-sub-link">Loan Services</a>
+      </div>
+    </div>
+
+      <a href="holding-page.html" class="nav-link">Downloads</a>
+      <a href="holding-page.html" class="nav-link">News</a>
+      <a href="holding-page.html" class="nav-link">Contact</a>
+  </nav>
+
   <!-- Hamburger button for mobile -->
     <button id="menu-toggle" class="hamburger-btn">
       <svg class="hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,11 +84,11 @@
     </button>
   </div>
 
-  <!-- Mobile nav -->
+  <!-- Mobile nav --
   <div id="mobile-menu" class="mobile-nav">
     <a href="index.html" class="mobile-nav-link active">Home</a>
 
-    <!-- About dropdown -->
+    <!-- About dropdown --
     <div class="mobile-nav-item">
       <a href="about.html" class="mobile-nav-link has-dropdown">About ▾</a>
       <div class="mobile-submenu">
@@ -68,7 +98,7 @@
       </div>
     </div>
 
-    <!-- Finance dropdown -->
+    <!-- Finance dropdown --
     <div class="mobile-nav-item">
       <a href="finance.html" class="mobile-nav-link has-dropdown">Finance ▾</a>
       <div class="mobile-submenu">
@@ -78,75 +108,114 @@
       </div>
     </div>
 
-    <!-- Other regular links -->
+    <!-- Other regular links --
     <a href="downloads.html" class="mobile-nav-link">Downloads</a>
     <a href="news.html" class="mobile-nav-link">News</a>
     <a href="contact.html" class="mobile-nav-link">Contact</a>
   </div>
 
-  <!-- JavaScript for toggle & accordion -->
+-->
+
+
+    <!-- Mobile nav -->
+  <div id="mobile-menu" class="mobile-nav">
+    <a href="index.html" class="mobile-nav-link active">Home</a>
+
+    <!-- About dropdown -->
+    <div class="mobile-nav-item">
+      <a href="about.html" class="mobile-nav-link has-dropdown">About ▾</a>
+      <div class="mobile-submenu">
+        <a href="membership.html" class="mobile-sub-link">Membership</a>
+        <a href="holding-page.html" class="mobile-sub-link">Leadership</a>
+        <a href="holding-page.html" class="mobile-sub-link">Gallery</a>
+      </div>
+    </div>
+
+    <!-- Finance dropdown -->
+    <div class="mobile-nav-item">
+      <a href="holding-page.html" class="mobile-nav-link has-dropdown">Finance ▾</a>
+      <div class="mobile-submenu">
+        <a href="holding-page.html" class="mobile-sub-link">Savings</a>
+        <a href="holding-page.html" class="mobile-sub-link">Loan Services</a>
+        <a href="holding-page.html" class="mobile-sub-link">Shares</a>
+      </div>
+    </div>
+
+    <!-- Other regular links -->
+    <a href="holding-page.html" class="mobile-nav-link">Downloads</a>
+    <a href="holding-page.html" class="mobile-nav-link">News</a>
+    <a href="holding-page.html" class="mobile-nav-link">Contact</a>
+  </div>
+
+
+
+
+
+
+<!-- JavaScript for toggle & accordion -->
   <script>
-const toggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
 
-toggle.addEventListener('click', () => {
-  menu.classList.toggle('show');
-});
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
 
-window.addEventListener('resize', () => {
-  if (window.innerWidth >= 768) menu.classList.remove('show');
-});
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) menu.classList.remove('show');
+    });
 
-window.addEventListener('orientationchange', () => {
-  menu.classList.remove('show');
-});
+    window.addEventListener('orientationchange', () => {
+      menu.classList.remove('show');
+    });
 
-// Keep track of last clicked link to allow second tap to navigate
-document.querySelectorAll('.has-dropdown').forEach(link => {
-  link.dataset.clicked = "false"; // initial state
+    // Keep track of last clicked link to allow second tap to navigate
+    document.querySelectorAll('.has-dropdown').forEach(link => {
+      link.dataset.clicked = "false"; // initial state
 
-  link.addEventListener('click', e => {
-    const submenu = link.nextElementSibling;
-    if (!submenu) return; // no submenu, normal link
+      link.addEventListener('click', e => {
+        const submenu = link.nextElementSibling;
+        if (!submenu) return; // no submenu, normal link
 
-    e.preventDefault(); // prevent navigation first click
+        e.preventDefault(); // prevent navigation first click
 
-    if (link.dataset.clicked === "false") {
-      // First tap → expand
-      submenu.classList.add('show');
-      submenu.style.height = submenu.scrollHeight + 'px';
-      link.dataset.clicked = "true";
-    } else {
-      // Second tap → navigate
-      link.dataset.clicked = "false"; // reset
-      window.location = link.href;
-    }
+        if (link.dataset.clicked === "false") {
+          // First tap → expand
+          submenu.classList.add('show');
+          submenu.style.height = submenu.scrollHeight + 'px';
+          link.dataset.clicked = "true";
+        } else {
+          // Second tap → navigate
+          link.dataset.clicked = "false"; // reset
+          window.location = link.href;
+        }
 
     // Collapse other open submenus if needed
-    document.querySelectorAll('.mobile-submenu').forEach(sub => {
-      if (sub !== submenu) {
-        sub.style.height = '0';
-        sub.classList.remove('show');
-        const parentLink = sub.previousElementSibling;
-        if (parentLink) parentLink.dataset.clicked = "false";
-      }
+        document.querySelectorAll('.mobile-submenu').forEach(sub => {
+          if (sub !== submenu) {
+            sub.style.height = '0';
+            sub.classList.remove('show');
+            const parentLink = sub.previousElementSibling;
+            if (parentLink) parentLink.dataset.clicked = "false";
+          }
+        });
+      });
     });
-  });
-});
 
-// Smooth collapse on sub-link click
-menu.querySelectorAll('.mobile-sub-link').forEach(link => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('show');
-    const parentSubmenu = link.closest('.mobile-submenu');
-    if (parentSubmenu) {
-      parentSubmenu.style.height = '0';
-      parentSubmenu.classList.remove('show');
-      const parentLink = parentSubmenu.previousElementSibling;
-      if (parentLink) parentLink.dataset.clicked = "false";
-    }
+    // Smooth collapse on sub-link click
+    menu.querySelectorAll('.mobile-sub-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('show');
+        const parentSubmenu = link.closest('.mobile-submenu');
+        if (parentSubmenu) {
+          parentSubmenu.style.height = '0';
+          parentSubmenu.classList.remove('show');
+          const parentLink = parentSubmenu.previousElementSibling;
+          if (parentLink) parentLink.dataset.clicked = "false";
+        }
+      });
   });
-});
+
 </script>
 
 </header>
@@ -796,15 +865,30 @@ menu.querySelectorAll('.mobile-sub-link').forEach(link => {
         <h3 class="footer-title">About the SACCO</h3>
         <p class="footer-text">UPF 22nd Intake SACCO is committed to empowering its members through financial services tailored for police officers.</p>
       </div>
+
+
+      <!-- <div class="footer-links">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-link-list">
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="loans.html">Loans</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div> -->
+
+
       <div class="footer-links">
         <h3 class="footer-title">Quick Links</h3>
         <ul class="footer-link-list">
-          <li><a href="#">Membership</a></li>
-          <li><a href="#">Loans</a></li>
-          <li><a href="#">Downloads</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="holding-page.html">Loans</a></li>
+          <li><a href="holding-page.html">Downloads</a></li>
+          <li><a href="holding-page.html">Contact</a></li>
         </ul>
       </div>
+
+
       <div class="footer-newsletter">
         <h3 class="footer-title">Newsletter</h3>
         <input type="email" placeholder="Your email" class="newsletter-input">
